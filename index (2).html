@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>АстанаДент — Премиум стоматология</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --bg: #0D0D0D;
+    --bg2: #111111;
+    --bg3: #161616;
+    --text: #F0EAD6;
+    --text-muted: #9A9080;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* Gold line accent */
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.2rem auto;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 32px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 0.4rem;
+  }
+
+  /* SERVICES */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+
+  .srv {
+    background: var(--bg2);
+    padding: 2.4rem 1.8rem;
+    text-align: center;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .srv::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .srv:hover { background: #151515; }
+  .srv:hover::before { transform: scaleX(1); }
+
+  .srv-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+  .srv-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .srv-price {
+    color: var(--gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .srv-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* DOCTORS */
+  .doctors {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+
+  .doc {
+    background: var(--bg2);
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    padding: 2rem 2.4rem;
+    transition: background 0.3s;
+  }
+
+  .doc:hover { background: #151515; }
+
+  .doc-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bg);
+    flex-shrink: 0;
+[26.04.2026 18:33] Тамерлан Балам: letter-spacing: 0.04em;
+  }
+
+  .doc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .doc-spec {
+    color: var(--gold);
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .doc-exp {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-top: 0.25rem;
+  }
+
+  /* REVIEWS */
+  .reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .review {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .review::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 0.5rem;
+    left: 1.2rem;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .review-author {
+    margin-top: 1.2rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(160deg, #111008 0%, #0D0D0D 50%, #0A0C0A 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cta p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .form-wrap {
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-wrap input {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-bottom-color: var(--gold-dark);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+    letter-spacing: 0.04em;
+  }
+
+  .form-wrap input::placeholder { color: var(--text-muted); }
+
+  .form-wrap input:focus {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.03);
+  }
+
+  .btn-gold {
+    margin-top: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: 0;
+  }
+
+  .btn-gold:hover::before { transform: scaleX(1); }
+  .btn-gold:hover { color: var(--bg); }
+  .btn-gold span { position: relative; z-index: 1; }
+
+  /* FOOTER */
+  .footer {
+    padding: 60px 32px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin: 0.3rem 0;
+    letter-spacing: 0.06em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section, .cta, .footer {
+    animation: fadeUp 0.8s ease both;
+  }
+</style>
+</head>
+<body>
+
+<!-- SERVICES -->
+<div class="section">
+  <div class="section-sub">Полный спектр помощи</div>
+  <div class="section-title">Услуги</div>
+  <div class="gold-line"></div>
+  <div class="services">
+    <div class="srv">
+      <div class="srv-icon">🦷</div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>АстанаДент — Стоматология в Астане</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --mint: #5BBFB0;
+    --mint-light: #A8DDD7;
+    --mint-dark: #3A9E90;
+    --blue: #7BB8D4;
+    --blue-light: #B8DCF0;
+    --bg: #F0F8F7;
+    --bg2: #FFFFFF;
+    --bg3: #E4F3F1;
+    --bg-alt: linear-gradient(180deg, #E8F5F3 0%, #EBF5F8 100%);
+    --text: #1E3A3A;
+    --text-muted: #6B9C9A;
+    --text-light: #9BBFBE;
+    --border: rgba(91,191,176,0.25);
+    --border-blue: rgba(123,184,212,0.3);
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(91,191,176,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .accent-line {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mint), var(--blue));
+    border-radius: 2px;
+    margin: 1rem auto;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #E8F6F4 0%, #D6EEF5 50%, #E2F2F0 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 70px 32px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,191,176,0.12), transparent 70%);
+  }
+
+  .hero-blob {
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123,184,212,0.12), transparent 70%);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(91,191,176,0.12);
+    border: 1px solid var(--border);
+    color: var(--mint-dark);
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 span { color: var(--mint-dark); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--mint-dark);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 72px 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--mint-dark);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 0.3rem;
+  }
+
+  /* WHY US */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+[26.04.2026 18:37] Тамерлан Балам: margin-top: 3rem;
+  }
+
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.6rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(91,191,176,0.12);
+  }
+
+  .why-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+
+  .why-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .why-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* BG ALT */
+  .bg-alt { background: linear-gradient(180deg, #E8F5F3 0%, #EBF5F8 100%); }
+
+  /* SERVICES */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .srv {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem 1.6rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .srv::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mint), var(--blue));
+    border-radius: 14px 14px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .srv:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(91,191,176,0.12); }
+  .srv:hover::after { opacity: 1; }
+
+  .srv-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+  .srv-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .srv-price { color: var(--mint-dark); font-size: 0.9rem; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+
+  .srv-desc { color: var(--text-muted); font-size: 0.86rem; line-height: 1.5; }
+
+  .srv-tag {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background: rgba(91,191,176,0.1);
+    color: var(--mint-dark);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  /* PRICE TABLE */
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3rem;
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .price-table th {
+    background: linear-gradient(90deg, var(--mint-dark), var(--blue));
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: left;
+    padding: 1rem 1.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .price-table td {
+    padding: 0.9rem 1.4rem;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .price-table tr:last-child td { border-bottom: none; }
+  .price-table tr:nth-child(even) td { background: var(--bg3); }
+  .price-table td:last-child { color: var(--mint-dark); font-weight: 500; white-space: nowrap; }
+
+  /* PROCESS */
+  .process { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--mint-light);
+    line-height: 1;
+    min-width: 48px;
+    text-align: center;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .step-text { color: var(--text-muted); font-size: 0.95rem; }
+
+  /* DOCTORS */
+  .doctors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .doc {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+[26.04.2026 18:37] Тамерлан Балам: transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .doc:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(91,191,176,0.1); }
+
+  .doc-top { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; }
+
+  .doc-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mint), var(--blue));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .doc-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--text); }
+  .doc-spec { color: var(--mint-dark); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.15rem; }
+  .doc-exp { color: var(--text-muted); font-size: 0.88rem; margin-top: 0.15rem; }
+
+  .doc-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+
+  .doc-tag {
+    background: var(--bg3);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .doc-bio {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* REVIEWS */
+  .reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .review {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.8rem;
+    position: relative;
+  }
+
+  .review::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--mint-light);
+    opacity: 0.5;
+    position: absolute;
+    top: 0.6rem; left: 1.2rem;
+  }
+
+  .stars { color: var(--mint); font-size: 1rem; letter-spacing: 0.12em; margin-bottom: 0.8rem; }
+  .review-text { font-size: 0.98rem; line-height: 1.7; color: var(--text); font-style: italic; }
+  .review-author { margin-top: 1rem; font-size: 0.8rem; color: var(--text-light); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* FAQ */
+  .faq { margin-top: 3rem; }
+
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 1.2rem 1.6rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  .faq-q::after { content: '+'; font-size: 1.4rem; color: var(--mint); font-weight: 300; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-q::after { content: '−'; }
+
+  .faq-a {
+    padding: 0 1.6rem 1.2rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    display: none;
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, #D4EEF5 0%, #C8EDE8 50%, #D4EEF5 100%);
+    border-top: 1px solid var(--border-blue);
+    border-bottom: 1px solid var(--border-blue);
+    padding: 80px 32px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+  }
+
+  .cta p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+  .form-wrap {
+    max-width: 440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-wrap input, .form-wrap select {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .
+form-wrap input::placeholder { color: var(--text-light); }
+  .form-wrap input:focus, .form-wrap select:focus {
+    border-color: var(--mint);
+    box-shadow: 0 0 0 3px rgba(91,191,176,0.12);
+  }
+
+  .form-wrap select { color: var(--text-muted); cursor: pointer; }
+
+  .btn-mint {
+    background: linear-gradient(90deg, var(--mint-dark), var(--blue));
+    border: none;
+    border-radius: 10px;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.2s;
+    box-shadow: 0 6px 20px rgba(91,191,176,0.25);
+    margin-top: 0.4rem;
+  }
+
+  .btn-mint:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  .form-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.4rem; }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 60px 32px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-logo span { color: var(--mint-dark); }
+  .footer-tagline { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; font-style: italic; }
+
+  .footer-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .footer-col { text-align: left; }
+
+  .footer-col-title {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mint-dark);
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+
+  .footer-col p { font-size: 0.9rem; color: var(--text-muted); margin: 0.2rem 0; }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, .section, .cta, .footer { animation: fadeUp 0.7s ease both; }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 1.5rem; }
+    .footer-grid { gap: 2rem; }
+    .step { flex-direction: column; gap: 0.5rem; }
+    .price-table { font-size: 0.85rem; }
+    .price-table th, .price-table td { padding: 0.7rem 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-badge">🦷 Астана · Достык 12</div>
+  <h1>Ваша улыбка —<br/><span>наша забота</span></h1>
+  <p class="hero-sub">Современная стоматология в Астане. Безболезненное лечение, европейские материалы, опытные врачи.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">12+</div>
+      <div class="stat-label">лет на рынке</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4 800</div>
+      <div class="stat-label">пациентов</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">рекомендуют</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">специалистов</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="section">
+  <div class="section-sub">Почему выбирают нас</div>
+  <div class="section-title">Наши преимущества</div>
+  <div class="accent-line"></div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">💉</div>
+      <div class="why-title">Безболезненно</div>
+      <div class="why-text">Современные анестетики. Вы не почувствуете ничего, кроме результата.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔬</div>
+      <div class="why-title">Технологии</div>
+<div class="why-text">3D-томография, лазерное лечение, цифровой слепок за 10 минут.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌿</div>
+      <div class="why-title">Безопасность</div>
+      <div class="why-text">Гипоаллергенные материалы. Стерилизация по стандарту ISO 9001.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📅</div>
+      <div class="why-title">Удобно</div>
+      <div class="why-text">Запись онлайн, гибкий график, напоминания за день до визита.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💳</div>
+      <div class="why-title">Рассрочка 0%</div>
+      <div class="why-text">Kaspi рассрочка до 24 месяцев без переплат и скрытых комиссий.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <div class="why-title">Гарантия</div>
+      <div class="why-text">На все работы — от 1 до 10 лет. Письменно, без оговорок.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="bg-alt">
+<div class="section">
+  <div class="section-sub">Полный спектр помощи</div>
+  <div class="section-title">Услуги</div>
+  <div class="accent-line"></div>
+  <div class="services">
+    <div class="srv">
+      <div class="srv-icon">🦷</div>
+      <div class="srv-name">Лечение кариеса</div>
+      <div class="srv-price">от 15 000 ₸</div>
+      <div class="srv-desc">Безболезненно, за один визит. Световые композиты А1–D4.</div>
+      <div class="srv-tag">Популярно</div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">✨</div>
+      <div class="srv-name">Отбеливание</div>
+      <div class="srv-price">от 45 000 ₸</div>
+      <div class="srv-desc">Результат — светлее на 6 тонов. Система Zoom 4.</div>
+      <div class="srv-tag">Хит</div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">🔩</div>
+      <div class="srv-name">Имплантация</div>
+      <div class="srv-price">от 180 000 ₸</div>
+      <div class="srv-desc">Немецкие импланты Straumann. Гарантия 10 лет.</div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">😁</div>
+      <div class="srv-name">Брекеты</div>
+      <div class="srv-price">от 250 000 ₸</div>
+      <div class="srv-desc">Металл, керамика, сапфир. Инвизалайн под заказ.</div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">🦴</div>
+      <div class="srv-name">Протезирование</div>
+      <div class="srv-price">от 90 000 ₸</div>
+      <div class="srv-desc">Коронки из циркония, металлокерамика, съёмные протезы.</div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">👶</div>
+      <div class="srv-name">Детская стоматология</div>
+      <div class="srv-price">от 8 000 ₸</div>
+      <div class="srv-desc">Игровой кабинет, без страха. Принимаем с 2 лет.</div>
+      <div class="srv-tag">Новинка</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PRICE TABLE -->
+<div class="section">
+  <div class="section-sub">Прозрачные цены</div>
+  <div class="section-title">Прайс-лист</div>
+  <div class="accent-line"></div>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Услуга</th>
+        <th>Что включено</th>
+        <th>Цена</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Консультация</td><td>Осмотр + план лечения</td><td>Бесплатно</td></tr>
+      <tr><td>Кариес (1 поверхность)</td><td>Анестезия + пломба</td><td>от 15 000 ₸</td></tr>
+      <tr><td>Кариес (2 поверхности)</td><td>Анестезия + пломба</td><td>от 22 000 ₸</td></tr>
+      <tr><td>Лечение пульпита</td><td>До 3 каналов</td><td>от 35 000 ₸</td></tr>
+      <tr><td>Удаление зуба</td><td>Анестезия + шов</td><td>от 12 000 ₸</td></tr>
+      <tr><td>Отбеливание Zoom 4</td><td>1 сеанс, защитный гель</td><td>от 45 000 ₸</td></tr>
+      <tr><td>Имплант Straumann (под ключ)</td><td>Импл. + абатмент + коронка</td><td>от 350 000 ₸</td></tr>
+      <tr><td>Коронка из циркония</td><td>Слепок + изготовление</td><td>от 90 000 ₸</td></tr>
+      <tr><td>Брекеты металл (1 челюсть)</td><td>Установка + дуга</td><td>от 125 000 ₸</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider"/>
+
+<!-- PROCESS -->
+ <div class="section">
+  <div class="section-sub">Как мы работаем</div>
+  <div class="section-title">Процесс лечения</div>
+  <div class="accent-line"></div>
+  <div class="process">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Запись и первый визит</div>
+        <div class="step-text">Онлайн или по телефону. На первой встрече — полный осмотр и 3D-диагностика бесплатно.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Индивидуальный план лечения</div>
+        <div class="step-text">Понятный пошаговый план с ценой каждого этапа. Никаких скрытых доплат.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Лечение без боли</div>
+        <div class="step-text">Современные анестетики. Можно смотреть Netflix в наушниках прямо на кресле 😊</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">Гарантия и контроль</div>
+        <div class="step-text">Напомним на следующий осмотр. Гарантия на все работы — от 1 до 10 лет.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTORS -->
+<div class="bg-alt">
+<div class="section">
+  <div class="section-sub">Наша команда</div>
+  <div class="section-title">Врачи</div>
+  <div class="accent-line"></div>
+  <div class="doctors">
+    <div class="doc">
+      <div class="doc-top">
+        <div class="doc-avatar">АС</div>
+        <div>
+          <div class="doc-name">Айгерим Сейткали</div>
+          <div class="doc-spec">Терапевт · Ортодонт</div>
+          <div class="doc-exp">14 лет · КазНМУ</div>
+        </div>
+      </div>
+      <div class="doc-tags">
+        <span class="doc-tag">Кариес</span>
+        <span class="doc-tag">Брекеты</span>
+        <span class="doc-tag">Инвизалайн</span>
+        <span class="doc-tag">Эндодонтия</span>
+      </div>
+      <div class="doc-bio">Специализируется на сложных ортодонтических случаях. Стажировка в Charite, Берлин. Говорит на казахском, русском и английском.</div>
+    </div>
+    <div class="doc">
+      <div class="doc-top">
+        <div class="doc-avatar">ДМ</div>
+        <div>
+          <div class="doc-name">Данияр Мухамедов</div>
+          <div class="doc-spec">Хирург-имплантолог</div>
+          <div class="doc-exp">11 лет · Сертификат Straumann</div>
+        </div>
+      </div>
+      <div class="doc-tags">
+        <span class="doc-tag">Имплантация</span>
+        <span class="doc-tag">Хирургия</span>
+        <span class="doc-tag">Костная пластика</span>
+      </div>
+      <div class="doc-bio">Провёл более 1 200 успешных имплантаций. Сертифицированный партнёр Straumann Institute. Принимает сложные клинические случаи.</div>
+    </div>
+    <div class="doc">
+      <div class="doc-top">
+        <div class="doc-avatar">ЗК</div>
+        <div>
+          <div class="doc-name">Зарина Копбаева</div>
+          <div class="doc-spec">Ортопед · Протезист</div>
+          <div class="doc-exp">9 лет · АГИУВ</div>
+        </div>
+      </div>
+      <div class="doc-tags">
+        <span class="doc-tag">Коронки</span>
+        <span class="doc-tag">Виниры</span>
+        <span class="doc-tag">Протезы</span>
+      </div>
+      <div class="doc-bio">Специалист по эстетической реставрации. Создаёт голливудские улыбки с помощью циркониевых виниров. Автор 3 научных публикаций.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- REVIEWS -->
+<div class="section">
+  <div class="section-sub">Что говорят пациенты</div>
+  <div class="section-title">Отзывы</div>
+  <div class="accent-line"></div>
+  <div class="reviews">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">Боялась стоматологов всю жизнь. Здесь всё сделали аккуратно и совсем не больно. Теперь только сюда.</div>
+      <div class="review-author">Малика К. · 2 недели назад</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+ <div class="review-text">Поставили имплант за один день. Цена адекватная, качество отличное. Рекомендую Данияра — профессионал высшего класса.</div>
+      <div class="review-author">Асхат Б. · месяц назад</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">Сделала отбеливание Zoom 4. Результат превзошёл ожидания — зубы заметно светлее уже после первого сеанса!</div>
+      <div class="review-author">Дана Р. · 3 недели назад</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="bg-alt">
+<div class="section">
+  <div class="section-sub">Часто спрашивают</div>
+  <div class="section-title">Вопросы и ответы</div>
+  <div class="accent-line"></div>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q">Больно ли лечить зубы у вас?</div>
+      <div class="faq-a">Нет. Мы используем современные анестетики с тонкими иглами. Большинство пациентов не чувствуют укол. При необходимости доступна седация.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Сколько стоит первый осмотр?</div>
+      <div class="faq-a">Первичная консультация и осмотр — бесплатно. При необходимости делаем снимок также бесплатно.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Есть ли рассрочка на лечение?</div>
+      <div class="faq-a">Да, работаем с Kaspi рассрочкой 0% до 24 месяцев без переплат и скрытых комиссий.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Как долго устанавливается имплант?</div>
+      <div class="faq-a">Операция занимает 30–60 минут. Приживление — 3–6 месяцев, затем устанавливается постоянная коронка. В ряде случаев возможна имплантация за 1 день.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Принимаете ли детей?</div>
+      <div class="faq-a">Да! У нас есть детский кабинет с игровой зоной. Принимаем малышей с 2 лет. Наши врачи умеют работать даже с самыми тревожными детьми.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CTA FORM -->
+<div class="cta">
+  <h2>Запишитесь на приём</h2>
+  <p>Первичная консультация — бесплатно.<br/>Ответим в течение 15 минут.</p>
+  <div class="form-wrap">
+    <input type="text" placeholder="Ваше имя"/>
+    <input type="tel" placeholder="Номер телефона"/>
+    <select>
+      <option value="" disabled selected>Выберите услугу</option>
+      <option>Консультация (бесплатно)</option>
+      <option>Лечение кариеса</option>
+      <option>Отбеливание</option>
+      <option>Имплантация</option>
+      <option>Брекеты</option>
+      <option>Протезирование</option>
+      <option>Детская стоматология</option>
+    </select>
+    <button class="btn-mint">Отправить заявку</button>
+    <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo">Астана<span>Дент</span></div>
+  <p class="footer-tagline">Красивая улыбка — это инвестиция в себя</p>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">Адрес</div>
+      <p>ул. Достык 12, Астана</p>
+      <p>2-й этаж, офис 204</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Контакты</div>
+      <p>+7 (700) 123-45-67</p>
+      <p>info@astana-dent.kz</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Режим работы</div>
+      <p>Пн–Пт: 9:00–20:00</p>
+      <p>Сб: 10:00–17:00</p>
+    </div>
+  </div>
+  <div class="footer-copy">© 2024 АстанаДент. Все права защищены.</div>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
